@@ -1,6 +1,6 @@
 import React,{useContext} from "react";
 import "../App.css"
-import {getClass} from "../utils/index"
+import { getClass } from "../utils/index.js";
 import Images from "../components/Image"
 import {ThemeContext} from "../themeContext"
 import { nanoid } from 'nanoid'
