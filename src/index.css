@@ -1,0 +1,9 @@
+:root {
+    background-image: url(/tic-tac-toe-seamless-background-on-dark-blue-illustration-vector.jpg)  ;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
