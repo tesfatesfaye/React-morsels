@@ -1,0 +1,23 @@
+
+.startPage{
+    display: flex;
+    flex-direction: column;
+    font-size: large;
+    width: 100vw;
+    height:100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+  }
+.createNew{
+    display: none;
+  }
+
+  .button--emptylist{
+    cursor: pointer;
+    background-color: var(--mainBg);
+    border: none;
+    color: white;
+    border-radius: 3px;
+    padding: 1rem;
+}
