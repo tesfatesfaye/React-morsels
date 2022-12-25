@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import useHover from "./hooks/useHover";
 import './App.css'
 export default function TicTac(props){

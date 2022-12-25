@@ -122,7 +122,7 @@ useEffect(()=>{
 
   return (
     <div className='parent'>
-       {victory===true ? <Confetti  width={window.innerWidth}/> : ""}
+       {victory===true  && tie===false? <Confetti  width={window.innerWidth}/> : ""}
       <h1 className='title' style={victory===true && player==="X" ? {color:'#FF5733'} :{color:'#39a0ca'}}>Tic Tac Toe</h1>
        <div className="App">
       {gameSetter}
