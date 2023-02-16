@@ -1,7 +1,7 @@
 import React from "react";
 import useHover from "./hooks/useHover";
 import './App.css'
-export default function TicTac(props){
+const TicTac=(props)=>{
     const[hover,setHoverState]=useHover()
     const mainStyle=()=>{
         if(props.clicked===true){
@@ -39,3 +39,77 @@ export default function TicTac(props){
     )
 
 }
+ 
+export default  TicTac
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
