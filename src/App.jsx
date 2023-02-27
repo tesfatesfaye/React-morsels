@@ -3,6 +3,7 @@ import {nanoid} from "nanoid"
 import './App.css'
 import TicTac from './TicTac'
 import Confetti from 'react-confetti'
+import { white } from 'colors'
 
 function App() {
 
@@ -130,7 +131,7 @@ useEffect(()=>{
     </div>
     <div className='victory' style={victory ? {display :"flex"} : {display: "none"}}>
     
-    {tie ? <h1 className='victoryText'>Its a tie</h1> : <h1 className={`victoryText ${player==="X" ? "y" : "x"}`}>{player==="X" ? "Player Two has won" : "Player One has won"}</h1> }
+    {tie ? <h1 className='victoryText' style={{color:white}}>Its a tie</h1> : <h1 className={`victoryText ${player==="X" ? "y" : "x"}`}>{player==="X" ? "Player Two has won" : "Player One has won"}</h1> }
     
     <button className='buttonCSS' onClick={newGame}>Replay</button>
     </div>
