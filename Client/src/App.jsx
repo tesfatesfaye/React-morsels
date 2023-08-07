@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import chime from './audio/chime.mp3'
 import './App.css'
 function App() {
-  const [form, setForm] = useState({ DocumentType: "coverLetter", myResume: "You can find my resume at https://askyourpdf.com/chat/eeb824d1-b839-4472-973d-d8ddd8490dec", roleDescription: "", moreTechnical: false, companyInfo: "", myPersonalityInfo: true, extraInfo: "", removeAll: false, showDocumentType: true })
+  const [form, setForm] = useState({ DocumentType: "coverLetter", myResume: "You can find my resume at doc_id: 37739193-1e64-4269-900c-9747e4456b62", roleDescription: "", moreTechnical: false, companyInfo: "", myPersonalityInfo: true, extraInfo: "", removeAll: false, showDocumentType: true })
   const [text, setText] = useState("")
   const [copy, setCopy] = useState(false)
   const [alert] = useState("Text has been copied")
