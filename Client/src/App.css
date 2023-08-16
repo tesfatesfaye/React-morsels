@@ -16,20 +16,43 @@ body,
     align-items: center;
     gap:200px;
     padding-left: 20px;
+   
 }
 
-fieldset{
-    width: 31%;
+.fieldsetClass {
+    background-color: rgb(245,247,251);
+    width: 30%;
+    min-width: 20%;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    height: 80%;
+    min-height: 80%;
+    resize: horizontal; /* Allow both horizontal and vertical resizing */
+    overflow: auto; /* Required for the resize property to work */
+    border: 2px solid black;
+    padding: 10px;
+}
+.fieldsetClass:hover {
+    cursor: ew-resize;     /* Cursor style for resizing */
 }
 .textDiv{
-    width: 30%;
+    min-width: 30%;
     display: flex;
     flex-direction: column;
     gap: 10px;
     height: 80%;
 
+}
+
+.resizable-div {
+    height: 100%;          /* 100% of parent's height */
+    min-width: 15%;        /* Minimum width of 30% of parent's width */
+    background-color: #ddd; /* Just for visualization purposes */
+    resize: horizontal;    /* Allow horizontal resizing */
+    overflow: auto;        /* Required for the resize property to work */
+    border-right: 2px dashed #333; /* Optional: A visual cue for resizing */
+}
+
+.resizable-div:hover {
+    cursor: ew-resize;     /* Cursor style for resizing */
 }

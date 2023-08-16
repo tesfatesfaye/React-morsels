@@ -46,7 +46,7 @@ function App() {
     }
     else {
       let val = form.removeAll && !form.showDocumentType ? form.extraInfo : `${obj[form.DocumentType]} ${form.extraInfo}`
-      setText(`based on the information given generate me a ${val}`)
+      setText(`Based on the information given generate me a ${val}`)
     }
   }
   const clear = (e) => {
@@ -104,7 +104,7 @@ function App() {
   }, [])
   return (
     <div className="App">
-      <fieldset>
+      <div className='fieldsetClass'>
         <label htmlFor='DocumentType'>What type of document is it ?</label>
         <select
           id='DocumentType'
@@ -198,14 +198,13 @@ function App() {
         <button ref={ref} style={{ marginLeft: "10px", marginRight: "auto" }} onClick={clipboard}>Copy</button>
         {(form.newResumeLink && text) && <button style={{ marginLeft: "10px", marginRight: "auto" }} onClick={clearResume}>Clear my resume</button>}
 
-      </fieldset>
+      </div >
 
       <div className='textDiv'>
         {text}
         {copy && <h1 style={{ color: "green" }}>{alert}</h1>}
 
-
-
+     
       </div>
     </div>
   )
