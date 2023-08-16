@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import chime from './audio/chime.mp3'
 import './App.css'
+import chime from './audio/chime.mp3'
 function App() {
-  const [form, setForm] = useState({ DocumentType: "coverLetter", myResume: "You can find my resume at doc_id: 37739193-1e64-4269-900c-9747e4456b62", roleDescription: "", moreTechnical: false, companyInfo: "", myPersonalityInfo: true, extraInfo: "", removeAll: false, showDocumentType: true })
+  const [form, setForm] = useState({ DocumentType: "coverLetter", myResume: "https://drive.google.com/file/d/114UlOvjid2zVvyNJWysQ5R1zLSPgn1ZZ/view?usp=drive_link", roleDescription: "", moreTechnical: false, companyInfo: "", myPersonalityInfo: true, extraInfo: "", removeAll: false, showDocumentType: true, newResumeLink: "" })
   const [text, setText] = useState("")
   const [copy, setCopy] = useState(false)
   const [alert] = useState("Text has been copied")
@@ -25,18 +25,18 @@ function App() {
   let obj = {
     coverLetter: "write me a cover letter 200-300 word ",
     summary: "write me a summary for a job application wo to ﬁve phrases written in a bulleted form or brief paragraph will do",
-    myPersonalityInfo: "this summary of my personality for addition info you don't have to use it word for word you can just use it to estimate my character:this summary of my personality for addition info you don't have to use it word for word you can just use it to estimate my character.The personality profile:  “if you want to improve be content to be thought foolish and stupid”, is emblematic of my existence. If a person with the mindset that the quality of their work, whatever it may be, is one of the strongest indicators of who they are as a person—in unison with the humility to accept their standing limitations to work past them, to evolve into the person required for the job, is proof of excellence, then I am  person for which you are looking. ",
-    myResume: "You can find my resume at https://askyourpdf.com/chat/eeb824d1-b839-4472-973d-d8ddd8490dec",
+    myPersonalityInfo: ".This summary of my personality for addition info you don't have to use it word for word you can just use it to estimate my character:this summary of my personality for addition info you don't have to use it word for word you can just use it to estimate my character.The personality profile:  “if you want to improve be content to be thought foolish and stupid”, is emblematic of my existence. If a person with the mindset that the quality of their work, whatever it may be, is one of the strongest indicators of who they are as a person—in unison with the humility to accept their standing limitations to work past them, to evolve into the person required for the job, is proof of excellence, then I am  person for which you are looking. ",
     reason: "Write me  reason I would like to work for a company I am applying to relate it to how I appreciate what they do and use the information about them or me ",
     roleDescription: "the role description: "
 
   };
+
   const submit = (e) => {
-    e.preventDefault()
+    if(e)e.preventDefault()
     if (!form.removeAll) {
       let string = ""
       string += obj[form.DocumentType] + " " + additonalInfo + " "
-      string += form.myResume + " "
+      string += `You can find my resume at : ${form.newResumeLink ? form.newResumeLink : "https://drive.google.com/file/d/114UlOvjid2zVvyNJWysQ5R1zLSPgn1ZZ/view?usp=drive_link"} ` + "  "
       form.myPersonalityInfo ? string += obj.myPersonalityInfo + " " : ""
       if (form.roleDescription.length) string += form.roleDescription + " "
       if (form.companyInfo.length) string += "information regarding the company :" + form.companyInfo
@@ -61,7 +61,14 @@ function App() {
     clear(e)
 
   }
-  const clipboard = (textData) => {
+  const clearResume = () => {
+    
+    setForm(prev => {
+      return { ...prev, newResumeLink: "" }
+    })
+    submit()
+  }
+  const clipboard = () => {
 
 
     navigator.clipboard.writeText(text)
@@ -130,6 +137,14 @@ function App() {
           value={form.extraInfo}
           onChange={onChange}
         />
+        <label htmlFor='newResumeLink'>New resume link</label> 
+        <input
+          type='text'
+          name='newResumeLink'
+          value={form.newResumeLink}
+          onChange={onChange}
+          id='newResumeLink'
+        />
         <label htmlFor='myPersonalityInfo'>Use personal info</label>
         <input style={{ marginLeft: "10px", marginRight: "auto" }}
           type='checkbox'
@@ -180,12 +195,13 @@ function App() {
         <button style={{ marginLeft: "10px", marginRight: "auto" }} onClick={clear}>Clear</button>
         <button style={{ marginLeft: "10px", marginRight: "auto" }} onClick={submitClear}>Submit/Clear</button>
         <button ref={ref} style={{ marginLeft: "10px", marginRight: "auto" }} onClick={clipboard}>Copy</button>
+        {(form.newResumeLink && text) && <button style={{ marginLeft: "10px", marginRight: "auto" }} onClick={clearResume}>Clear my resume</button>}
 
       </fieldset>
 
       <div className='textDiv'>
         {text}
-        {copy && <h1 style={{color:"green"}}>{alert}</h1>}
+        {copy && <h1 style={{ color: "green" }}>{alert}</h1>}
 
 
 
