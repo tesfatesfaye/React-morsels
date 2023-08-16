@@ -75,6 +75,7 @@ function App() {
       .then(() => {
         if (playAudio) {
           audio.play();
+          
         }
         setCopy(true);
 
