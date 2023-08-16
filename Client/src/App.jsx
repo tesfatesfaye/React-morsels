@@ -21,10 +21,10 @@ function App() {
     })
   }
 
-  let additonalInfo = "you may use any additional info I pass to you such as my resume and a summary of my personality which you can use, I will pass information about the job posting and or the company summary, make sure that you only refer to the  technologies listed in my resume, it is pertinent that you don't add things that are not in my resume unless I explicitly instruct you to do it later on in this prompt I will discussed"
+  let additonalInfo = "You may use any additional info I pass to you such as my resume and a summary of my personality which you can use, I will pass information about the job posting and or the company summary, make sure that you only refer to the  technologies listed in my resume, it is pertinent that you don't add things that are not in my resume unless I explicitly instruct you to do it later on in this prompt I will discussed"
   let obj = {
-    coverLetter: "write me a cover letter 200-300 word ",
-    summary: "write me a summary for a job application wo to ﬁve phrases written in a bulleted form or brief paragraph will do",
+    coverLetter: "Write me a cover letter 200-300 word ",
+    summary: "Write me a summary for a job application two to ﬁve phrases written in a bulleted form or brief paragraph will do",
     myPersonalityInfo: ".This summary of my personality for addition info you don't have to use it word for word you can just use it to estimate my character:this summary of my personality for addition info you don't have to use it word for word you can just use it to estimate my character.The personality profile:  “if you want to improve be content to be thought foolish and stupid”, is emblematic of my existence. If a person with the mindset that the quality of their work, whatever it may be, is one of the strongest indicators of who they are as a person—in unison with the humility to accept their standing limitations to work past them, to evolve into the person required for the job, is proof of excellence, then I am  person for which you are looking. ",
     reason: "Write me  reason I would like to work for a company I am applying to relate it to how I appreciate what they do and use the information about them or me ",
     roleDescription: "the role description: "
