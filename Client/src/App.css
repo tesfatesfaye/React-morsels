@@ -40,8 +40,9 @@ body,
     width: 30%;
     display: flex;
     flex-direction: column;
+
     gap: 10px;
-    height: 80%;
+    
 
 }
 
