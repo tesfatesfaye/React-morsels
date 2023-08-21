@@ -34,14 +34,14 @@ function App() {
   const submit = (e) => {
     if(e)e.preventDefault()
     if (!form.removeAll) {
-      let string = ""
+      let string = "My name is Tesfa Tesfaye, I need you to  "
       string += obj[form.DocumentType] + " " + additonalInfo + " "
       string += `You can find my resume at : ${form.newResumeLink ? form.newResumeLink : "https://drive.google.com/file/d/114UlOvjid2zVvyNJWysQ5R1zLSPgn1ZZ/view?usp=drive_link"} ` + "  "
       form.myPersonalityInfo ? string += obj.myPersonalityInfo + " " : ""
       if (form.roleDescription.length) string += obj.roleDescription+" "+form.roleDescription + " "
       if (form.companyInfo.length) string += "Information regarding the company :" + form.companyInfo
       form.moreTechnical ? string += ". Make the generated text more technical" : " Make the generated text more personal"
-      form.extraInfo.length ? string += form.extraInfo : ""
+      form.extraInfo.length ? string += form.extraInfo : "You can not add any technologies that are not in my resume"
       setText(string)
     }
     else {
@@ -52,7 +52,8 @@ function App() {
   const clear = (e) => {
     e.preventDefault()
     setForm(prev => {
-      return { ...prev, extraInfo: "", companyInfo: "", roleDescription: "", removeAll: false, showDocumentType: true }
+      return { ...prev, extraInfo: "", companyInfo: "", 
+      roleDescription: "", removeAll: false, showDocumentType: true }
     })
     setText('')
   }
