@@ -9,12 +9,11 @@ function App() {
   const ref = useRef(null)
   const submitRef = useRef(null)
   const [playAudio, setPlayAudio] = useState(true)
+  const newRef=useRef(null)
   const audio = new Audio(chime);
-  const rezi = "Tesfa Tesfaye Cambridge, Massachusetts, United States t@tesfaget.dev 215-980-5093 LinkedIn GitHub SKILLS • JavaScript | TypeScript | React.js | Redux | Next.js | Node.js | Frontend | Backend | Full-Stack | Electron • Express | MongoDB | MySQL | NoSQL | tRPC | Prisma | CI/CD | Mongoose | Git | Unit Testing | Framer Motion • HTML | CSS | Bootstrap | Tailwinds | Java | Python | Jest | OOP | Data Structures and Algorithms | Bash • AWS | Amplify | S3 | EC2 | Algolia | Vercel | Firebase | GitHub Actions | MUI | React Query | RESTful APIs EXPERIENCE Software Developer at Aedificare, September 2021 - Present, Boston, MA ● Collaborated on a MERN application aimed at analyzing and storing data regarding foreign direct investments in developing countries, achieving a 25% improvement in data processing speed. ● Integrated robust features and performed stability and reliability tests, resulting in a 15% reduction in load times. ● Contributed to the efficiency of data analysis through the implementation of advanced data visualization tools, improving data accessibility by 20%. ● Streamlined application's data flow and state management through strategic utilization of the context, memo, callback, and custom hooks. Thereby, reducing time spent debugging by approximately 10%. ● Collaborated on a real-time data updating feature using socket.io, enhancing user experience and improving the application's responsiveness by 15%. Software Engineer, Intern at Infinity Wealth Management February 2021 - August 2021, Denver, CO ● Implemented new front-end features for an investment portal with React, increasing client engagement by 20%. ● Participated in the development of a comprehensive dashboard system using the MERN stack. This initiative increased data accessibility by 30%. ● Ported a web application to a desktop platform with Electron augmenting productivity by 25%. ● Co-authored detailed documentation for the developed codebase, decreasing onboarding time by 15%. Software Engineer, Intern at WEL, Siena College  June 2020 - December 2020, Loudonville, NY● Collaborated with a small team to develop a web application using React and sampled the viability of custom component layouts as dictated by web designers. Using best practices, reducing the refactoring time by 10%. ● Boosted front-end test coverage by 15% through rigorous stability and reliability testing with Jest and RTL. ● Refactored front-end code to utilize custom hooks, increasing client-side performance by approximately 20%. ● Engaged in comprehensive code reviews, gaining valuable insights into best practices for enhancing code quality and readability, contributing to a 10% improvement in overall code maintainability and efficiency. ● Decreased bug requests by 35% through rigorous debugging and Refactoring. PROJECTS FreePass (2023) ● A free and secure user-friendly platform for managing passwords built using the T3 stack, ensuring full-stack type safety and modularity. ● Decreased runtime errors by 50%, and increased reliability by 30% by switching from the MERN stack to the T3 stack. ● Future iterations promise a desktop and a mobile app built leveraging Electron and React Native, potentially increasing user accessibility by 60%. EDUCATION Bachelor of Science"+
+  const rezi = "Tesfa Tesfaye Cambridge, Massachusetts,United States t@tesfaget.dev 215-980-5093 LinkedIn GitHub SKILLS • JavaScript | TypeScript | React.js | Redux | Next.js | Node.js | Frontend | Backend | Full-Stack | Electron • Express | MongoDB | MySQL | NoSQL | tRPC | Prisma | CI/CD | Mongoose | Git | Unit Testing | Framer Motion • HTML | CSS | Bootstrap | Tailwinds | Java | Python | Jest | OOP | Data Structures and Algorithms | Bash • AWS | Amplify | S3 | EC2 | Algolia | Vercel | Firebase | GitHub Actions | MUI | React Query | RESTful APIs EXPERIENCE Software Developer at Aedificare, September 2021 - Present, Boston, MA ● Collaborated on a MERN application aimed at analyzing and storing data regarding foreign direct investments in developing countries, achieving a 25% improvement in data processing speed. ● Integrated robust features and performed stability and reliability tests, resulting in a 15% reduction in load times. ● Contributed to the efficiency of data analysis through the implementation of advanced data visualization tools, improving data accessibility by 20%. ● Streamlined application's data flow and state management through strategic utilization of the context, memo, callback, and custom hooks. Thereby, reducing time spent debugging by approximately 10%. ● Collaborated on a real-time data updating feature using socket.io, enhancing user experience and improving the application's responsiveness by 15%. Software Engineer, Intern at Infinity Wealth Management February 2021 - August 2021, Denver, CO ● Implemented new front-end features for an investment portal with React, increasing client engagement by 20%. ● Participated in the development of a comprehensive dashboard system using the MERN stack. This initiative increased data accessibility by 30%. ● Ported a web application to a desktop platform with Electron augmenting productivity by 25%. ● Co-authored detailed documentation for the developed codebase, decreasing onboarding time by 15%. Software Engineer, Intern at WEL, Siena College  June 2020 - December 2020, Loudonville, NY● Collaborated with a small team to develop a web application using React and sampled the viability of custom component layouts as dictated by web designers. Using best practices, reducing the refactoring time by 10%. ● Boosted front-end test coverage by 15% through rigorous stability and reliability testing with Jest and RTL. ● Refactored front-end code to utilize custom hooks, increasing client-side performance by approximately 20%. ● Engaged in comprehensive code reviews, gaining valuable insights into best practices for enhancing code quality and readability, contributing to a 10% improvement in overall code maintainability and efficiency. ● Decreased bug requests by 35% through rigorous debugging and Refactoring. PROJECTS FreePass (2023) ● A free and secure user-friendly platform for managing passwords built using the T3 stack, ensuring full-stack type safety and modularity. ● Decreased runtime errors by 50%, and increased reliability by 30% by switching from the MERN stack to the T3 stack. ● Future iterations promise a desktop and a mobile app built leveraging Electron and React Native, potentially increasing user accessibility by 60%. EDUCATION Bachelor of Science"+
    " in Computer Science and Bachelor of Arts in Economics Siena College • Loudonville, NY • 2020"
-
-
-
+   
 
   const onChange = (e) => {
     const { name, value, type, checked } = e.target
@@ -45,7 +44,7 @@ function App() {
        if (form.companyInfo.length) string += "Information regarding the company :" + form.companyInfo
       form.moreTechnical ? string += ". Make the generated text more technical" : " Make the generated text more personal"
       form.extraInfo.length ? string += form.extraInfo : "You can not add any technologies that are not in my resume"
-      string += ` ${form.newResumeLink ? form.newResumeLink : (!form.stringResume ? `You can find my resume at : https://drive.google.com/file/d/114UlOvjid2zVvyNJWysQ5R1zLSPgn1ZZ/view?usp=drive_link you are to parse it and use the information within as part of the cover letter ` + " " : "The text extracted from my resume pdf :" + rezi + " ")} `
+      string += ` ${form.newResumeLink ? form.newResumeLink : (!form.stringResume ? `You can find my resume at : https://drive.google.com/file/d/114UlOvjid2zVvyNJWysQ5R1zLSPgn1ZZ/view?usp=drive_link you are to parse it and use the information within as part of the cover letter ` + " " : `The text extracted is from my resume you are to use this information in the job ${form.DocumentType}, not pass it to them or refer to it is to be used as source of information for you to use and just that :` + rezi + " ")} `
       setText(string)
     }
     else {
@@ -206,7 +205,7 @@ function App() {
           checked={form.stringResume}
           onChange={onChange}
         />
-        <label htmlFor='playAudio'>PlayAudio</label>
+        <legend htmlFor='playAudio'>PlayAudio</legend>
         <input style={{ marginLeft: "10px", marginRight: "auto" }}
           type='checkbox'
           id="playAudio"
@@ -232,11 +231,11 @@ function App() {
           {(form.newResumeLink && text) && <button style={{ marginLeft: "10px", marginRight: "auto" }} onClick={clearResume}>Clear my resume</button>}
           
         </div>
-       
+    
 
       </div >
 
-      <div className='textDiv'>
+      <div ref={newRef}className='textDiv'>
         {text}
         {copy && <h1 style={{ color: "green" }}>{alert}</h1>}
 
