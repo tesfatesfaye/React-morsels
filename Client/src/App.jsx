@@ -173,15 +173,7 @@ function App() {
           value={form.myPersonalityInfo}
           onChange={onChange}
         />
-        <label htmlFor=''>Use personal info</label>
-        <input style={{ marginLeft: "10px", marginRight: "auto" }}
-          type='checkbox'
-          id='myPersonalityInfo'
-          name='myPersonalityInfo'
-          checked={form.myPersonalityInfo}
-          value={form.myPersonalityInfo}
-          onChange={onChange}
-        />
+        
 
         <label htmlFor='moreTechnical'>More Technical</label>
         <input style={{ marginLeft: "10px", marginRight: "auto" }}
