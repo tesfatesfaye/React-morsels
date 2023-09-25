@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import chime from './audio/chime.mp3'
 function App() {
-  const [form, setForm] = useState({ DocumentType: "coverLetter", myResume: "https://drive.google.com/file/d/1RDVao_y-3-QPI9Li9lD346cyiJ0vMXV7/view?usp=drive_link", roleDescription: "", moreTechnical: false, companyInfo: "", myPersonalityInfo: true, extraInfo: "", removeAll: false, showDocumentType: true, newResumeLink: "",mern:true ,stringResume:true})
+  const [form, setForm] = useState({
+    DocumentType: "coverLetter", myResume: "https://drive.google.com/file/d/1RDVao_y-3-QPI9Li9lD346cyiJ0vMXV7/view?usp=drive_link", roleDescription: "", moreTechnical: false, companyInfo: "", myPersonalityInfo: true, extraInfo: "", removeAll: false, showDocumentType: true, newResumeLink: "",mern:true ,stringResume:true,docType:""})
   const [text, setText] = useState("")
   const [copy, setCopy] = useState(false)
   const [alert] = useState("Text has been copied")
@@ -24,6 +25,7 @@ function App() {
 
   let additonalInfo = "You may use any additional info I pass to you such as my resume and a summary of my personality which you can use, I will pass information about the job posting and or the company summary, make sure that you only refer to the  technologies listed in my resume, it is pertinent that you don't add things that are not in my resume unless I explicitly instruct you to do it later on in this prompt I will discussed"
   let obj = {
+    new:`Write me a  ${form.docType} document keep the length 200-300 words `,
     coverLetter: "Write me a cover letter 200-300 word ",
     summary: "Write me a summary for a job application two to ﬁve phrases written in a bulleted form or brief paragraph will do",
     myPersonalityInfo: ".This summary of my personality for addition info you don't have to use it word for word you can just use it to estimate my character:this summary of my personality for addition info you don't have to use it word for word you can just use it to estimate my character.The personality profile:  “if you want to improve be content to be thought foolish and stupid”, is emblematic of my existence. If a person with the mindset that the quality of their work, whatever it may be, is one of the strongest indicators of who they are as a person—in unison with the humility to accept their standing limitations to work past them, to evolve into the person required for the job, is proof of excellence, then I am  person for which you are looking. ",
@@ -36,7 +38,7 @@ function App() {
     if(e)e.preventDefault()
     if (!form.removeAll) {
       let string = "My name is Tesfa Tesfaye, I need you to  "
-      string += obj[form.DocumentType] + " " + additonalInfo + " "
+      string += (form.DocumentType === "new" ? obj["new"]:obj[form.DocumentType]) + " " + additonalInfo + " "
       
       form.myPersonalityInfo ? string += obj.myPersonalityInfo + " " : ""
       if (form.roleDescription.length) string += obj.roleDescription+" "+form.roleDescription + " "
@@ -118,6 +120,7 @@ function App() {
           <option value="coverLetter">Cover Letter</option>
           <option value="summary">Summary</option>
           <option value="reason">Reason for job</option>
+          <option value="new">new</option>
         </select>
         <label htmlFor='RoleDescription'> Job Post details</label>
         <input type="text"
@@ -134,6 +137,17 @@ function App() {
           id='companyInfo'
           name='companyInfo'
         />
+        { form.DocumentType==="new"&&
+        <>
+        <label htmlFor='companyInfo' >Doctype</label>
+        <input type="text"
+          value={form.docType}
+          onChange={onChange}
+          id='docType'
+          name='docType'
+        />
+        </>
+}
         <label htmlFor='extraInfo'>Extra Info</label>
         <input
           type='text'
