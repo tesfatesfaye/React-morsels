@@ -3,7 +3,7 @@ import './App.css'
 import chime from './audio/chime.mp3'
 function App() {
   const [form, setForm] = useState({
-    DocumentType: "coverLetter", myResume: "https://drive.google.com/file/d/17EOO1AmHVNKXSRKa-AqWaCfcwj6FUm14/view?usp=share_link", roleDescription: "", moreTechnical: false, companyInfo: "", myPersonalityInfo: true, extraInfo: "", removeAll: false, showDocumentType: true, newResumeLink: "",mern:true ,stringResume:true,docType:""})
+  DocumentType: "coverLetter", myResume: "https://drive.google.com/file/d/17EOO1AmHVNKXSRKa-AqWaCfcwj6FUm14/view?usp=share_link", roleDescription: "", moreTechnical: false, companyInfo: "", myPersonalityInfo: true, extraInfo: "", removeAll: false, showDocumentType: true, newResumeLink: "",mern:true ,stringResume:true,docType:""})
   const [text, setText] = useState("")
   const [copy, setCopy] = useState(false)
   const [alert] = useState("Text has been copied")
@@ -30,6 +30,7 @@ function App() {
     summary: "Write me a summary for a job application two to ﬁve phrases written in a bulleted form or brief paragraph will do",
     myPersonalityInfo: ".This summary of my personality for addition info you don't have to use it word for word you can just use it to estimate my character:this summary of my personality for addition info you don't have to use it word for word you can just use it to estimate my character.The personality profile:  “if you want to improve be content to be thought foolish and stupid”, is emblematic of my existence. If a person with the mindset that the quality of their work, whatever it may be, is one of the strongest indicators of who they are as a person—in unison with the humility to accept their standing limitations to work past them, to evolve into the person required for the job, is proof of excellence, then I am  person for which you are looking. ",
     reason: "Write me  reason I would like to work for a company I am applying to relate it to how I appreciate what they do and use the information about them or me ",
+    whythisJob:"Write me a short reason as to why I would like to work this position, keep the nature of the position , the company and my background in mind",
     roleDescription: "the role description: "
 
   };
@@ -46,7 +47,7 @@ function App() {
        if (form.companyInfo.length) string += "Information regarding the company :" + form.companyInfo
       form.moreTechnical ? string += ". Make the generated text more technical" : " Make the generated text more personal"
       form.extraInfo.length ? string += form.extraInfo : "You can not add any technologies that are not in my resume"
-      string += ` ${form.newResumeLink ? form.newResumeLink : (!form.stringResume ? `You can find my resume at : https://drive.google.com/file/d/114UlOvjid2zVvyNJWysQ5R1zLSPgn1ZZ/view?usp=drive_link you are to parse it and use the information within as part of the cover letter ` + " " : `The text extracted is from my resume you are to use this information in the job ${form.DocumentType}, not pass it to them or refer to it is to be used as source of information for you to use and just that :` + rezi + " ")} `
+      string += ` ${form.newResumeLink ? form.newResumeLink : (!form.stringResume ? `You can find my resume at : ${form.myResume} you are to parse it and use the information` + " " : `The text extracted is from my resume you are to use this information in the job ${form.DocumentType}, not pass it to them or refer to it is to be used as source of information for you to use and just that :` + rezi + " ")} `
       setText(string)
     }
     else {
@@ -119,8 +120,10 @@ function App() {
           name='DocumentType'>
           <option value="coverLetter">Cover Letter</option>
           <option value="summary">Summary</option>
-          <option value="reason">Reason for job</option>
+          <option value="reason">Reason for choosing this company</option>
+          <option value="whythisJob">Why this job</option>
           <option value="new">new</option>
+    
         </select>
         <label htmlFor='RoleDescription'> Job Post details</label>
         <input type="text"
