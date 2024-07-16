@@ -1,82 +1,201 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
+import "./App.css";
+import {
+  boilerPlateInstruction,
+  style,
+  response1,
+  response2,
+  score,
+  justification,
+  append,
+} from "/boilerplate";
+import React, { useEffect, useState } from "react";
+
 function App() {
-  const [stack, setStack] = useState([]);
-  const [inputValue, setInputValue] = useState('');
+  const [instructions, setInstructions] = useState(boilerPlateInstruction);
+  const [completePrompt, setCompletePrompt] = useState("");
+  const [prompt, setPrompt] = useState("");
+  const [ChainOfThought1, setChainOfThought1] = useState("");
+  const [output1, setOutput1] = useState("");
+  const [error1, setError1] = useState("");
+  const [ChainOfThought2, setChainOfThought2] = useState("");
+  const [output2, setOutput2] = useState("");
+  const [error2, setError2] = useState("");
+  const [rateOne] = useState(response1);
+  const [rateTwo] = useState(response2);
+  const [SxSScore] = useState(score);
+  const [SxSScorJustification] = useState(justification);
+  const [combine, setCombinedPrompt] = useState(false);
+const [alertMessage, setAlertMessage] = useState('');
+const [showAlert, setShowAlert] = useState(false);
 
-  useEffect(() => {
-    const localValue = JSON.parse(localStorage.getItem("stack"))
-    console.log(localValue)
-    if (localValue) {
-      setStack(localValue);
-    }
-
-
-  }, [])
-
-  // useEffect(() => {
-  //   const handleKeyDown = (e) => {
-  //     if (e.key === 'v') {
-  //       // Add to stack from clipboard
-  //       navigator.clipboard.readText().then((clipText) => {
-  //         setStack([clipText, ...stack]);
-  //       });
-  //     } else if (e.key === '=') {
-  //       // Remove from stack and copy to clipboard
-  //       if (stack.length > 0) {
-  //         const [top, ...rest] = stack;
-  //         navigator.clipboard.writeText(top).then(() => {
-  //           setStack(rest);
-  //           // alert('Top of stack copied to clipboard');
-  //         });
-  //       }
-  //     }
-  //   };
-
-  //   window.addEventListener('keydown', handleKeyDown);
-
-  //   return () => {
-  //     window.removeEventListener('keydown', handleKeyDown);
-  //   };
-  // }, [stack]);
-
-  const handleAdd = () => {
-    if (inputValue === '') return;
-    setStack([inputValue, ...stack]);
-    localStorage.setItem("stack", JSON.stringify([inputValue, ...stack]))
-    setInputValue('');
+  const wrapper = (text, code = true) => {
+    return code ? "`" + text + "`" : text;
   };
 
-  const copy = () => {
-    let [top, ...rest] = stack;
-    navigator.clipboard.writeText(top).then(() => {
-      setStack(rest);
-      localStorage.setItem("stack", JSON.stringify(rest))
-      // alert('Top of stack copied to clipboard');
-    });
-  }
-  const enter = (e) => {
-    console.log(e.key)
-    if (e.key === 'Enter') {
-      handleAdd();
+  const resetAll = async () => {
+    setCompletePrompt("");
+    setPrompt("");
+    setChainOfThought1("");
+    setOutput1("");
+    setError1("");
+    setChainOfThought2("");
+    setOutput2("");
+    setError2("");
+
+    // Clear the clipboard if the Clipboard API is available
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText("");
     }
-  }
+  };
+
+  useEffect(() => {
+    let fullPrompt = instructions+" "+
+      "\nPrompt: " +
+      prompt +
+      "\nChain of Thought 1: " +
+      wrapper(ChainOfThought1) +
+      "\nOutput 1: " +
+      wrapper(output1) +
+      "\nError 1: " +
+      wrapper(error1) +
+      "\nChain of Thought 2: " +
+      wrapper(ChainOfThought2) +
+      "\nOutput 2: " +
+      wrapper(output2) +
+      "\nError 2: " +
+      wrapper(error2)+ append;
+    setCompletePrompt(fullPrompt);
+  }, [
+    combine,
+    prompt,
+    ChainOfThought1,
+    output1,
+    error1,
+    ChainOfThought2,
+    output2,
+    error2,
+  ]);
+
+  const copyToClipboard = (text) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+      alert("Text copied to clipboard successfully!");
+      })
+      .catch((err) => {
+       alert("Failed to copy text to clipboard: ", err);
+      });
+  };
+
+  const CopyToClipboardElement = ({ title, value, code = "" }) => {
+    return (
+      <button onClick={() => copyToClipboard(code + value + code)}>
+        Copy {title}
+      </button>
+    );
+  };
+
+  const InputElement = ({ label, value, setValue, code = "" }) => {
+    return (
+      <div style={{ display: "flex", gap: "10px" }}>
+        <label>{label}</label>
+        <input
+          value={value}
+          style={{ maxWidth: "20%", marginLeft: "10px" }}
+          onChange={(e) => setValue(() => e.target.value)}
+        />
+        <CopyToClipboardElement title={label} value={value} code={code} />
+      </div>
+    );
+  };
+
+  const combineAndCopy = () => {
+    setCombinedPrompt(true);
+    copyToClipboard(completePrompt);
+    
+
+  };
 
   return (
-    <div className='App'>
-      <h1>{stack.length}</h1>
-      <textarea
-        value={inputValue}
-        onKeyDown={(e) => enter(e)}
-        onChange={(e) => setInputValue(e.target.value)}
-      />
-      <button onClick={handleAdd}>Add to Stack</button>
-      <button onClick={copy}>Copy</button>
-      <ul>
-        {stack.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
+    <div className="App" style={style}>
+      <div className="buttonHolder">
+        {CopyToClipboardElement({
+          title: "Instructions",
+          value: instructions,
+        })}
+
+        {CopyToClipboardElement({
+          title: "Rate response1",
+          value: rateOne,
+        })}
+        {CopyToClipboardElement({
+          title: "Rate response2",
+          value: rateTwo,
+        })}
+        {CopyToClipboardElement({
+          title: "SxS Score",
+          value: SxSScore,
+        })}
+        {CopyToClipboardElement({
+          title: "SxS Justification",
+          value: SxSScorJustification,
+        })}
+
+        <button onClick={combineAndCopy}>Combine and Copy Prompt</button>
+
+        <button onClick={resetAll}>Reset All</button>
+      </div>
+
+      <br />
+      {InputElement({
+        label: "Initial Prompt",
+        value: prompt,
+        setValue: setPrompt,
+      })}
+      {InputElement({
+        label: "Chain of Thought 1",
+        value: ChainOfThought1,
+        setValue: setChainOfThought1,
+        code: "`",
+      })}
+      {InputElement({
+        label: "Output 1",
+        value: output1,
+        setValue: setOutput1,
+        code: "`",
+      })}
+      {InputElement({
+        label: "Error 1",
+        value: error1,
+        setValue: setError1,
+        code: "`",
+      })}
+      {InputElement({
+        label: "Chain of Thought 2",
+        value: ChainOfThought2,
+        setValue: setChainOfThought2,
+        code: "`",
+      })}
+      {InputElement({
+        label: "Output 2",
+        value: output2,
+        setValue: setOutput2,
+        code: "`",
+      })}
+      {InputElement({
+        label: "Error 2",
+        value: error2,
+        setValue: setError2,
+        code: "`",
+      })}
+
+      <h1>{prompt}</h1>
+      <h1>{ChainOfThought1}</h1>
+      <h1>{output1}</h1>
+      <h1>{error1}</h1>
+      <h1>{ChainOfThought2}</h1>
+      <h1>{output2}</h1>
+      <h1>{error2}</h1>
     </div>
   );
 }
