@@ -12,7 +12,28 @@ You should judge based on which response moves the model in the best direction t
 const response1 = `Rate Response 1 on the 4 dimensions`;
 const response2 = `Rate Response 2 on the 4 dimensions`;
 const score = `Provide a side-by-side score to specify how much you prefer one response over the other, per the “Code v Code Official Instructions” file.`;
-const justification = `Write a good justification based on the examples and structure of what is presented as a good justification per the “Code v Code Official Instructions” file.`;
+const justification = `Write a good justification based on the examples and structure of what is presented as a good justification per the “Code v Code Official Instructions” file. Structure it with an opening statement comparing the two outputs and the degree to which one is better than the other or equivalent, then follow with how they compare in the following dimensions, 
+Tool correctness : 
+
+
+Function correctness:
+
+Parameter Correctness: 
+
+Fulfillment:
+It should also meet the criteria to cover the following points: 
+•  A clear verdict stating which response is better. 1-2 sentences in the general format of "Response 1 is better than/more fulfilling than/superior to/etc Response 2 because of x, y, z."
+•  A declaration of the tools used and why they were/were not correct.
+•  A declaration of the functions used and why they were/were not correct.
+•  A declaration of the parameters used and why they were/were not correct.
+•  An explanation about how each response did or did not fulfill the prompt, and why one response is more or less fulfilling than the other. Alternatively, this can be an explanation as to why the responses are roughly the same in terms of fulfillment.
+•  Evidence/Specific Examples to back up the justification.
+•  If the Output is empty or blank, the justification must indicate this
+•  If there is an Error populated, the justification must indicate this
+
+
+Keep it very similar to the examples given in the “Code v Code Official instructions” document. The length of the justification should be between 250-300 words no more no less
+`;
 const append = ` \n For now, just take in the information; don’t respond with the answer. I will ask you questions individually. I wish to tackle this problem piece by piece instead of as a monolith.`;
 
 
