@@ -15,9 +15,11 @@ function App() {
   const [completePrompt, setCompletePrompt] = useState("");
   const [prompt, setPrompt] = useState("");
   const [ChainOfThought1, setChainOfThought1] = useState("");
+  const [code1,setCode1]=useState("")
   const [output1, setOutput1] = useState("");
   const [error1, setError1] = useState("");
   const [ChainOfThought2, setChainOfThought2] = useState("");
+   const [code2,setCode2]=useState("")
   const [output2, setOutput2] = useState("");
   const [error2, setError2] = useState("");
   const [rateOne] = useState(response1);
@@ -36,9 +38,11 @@ const [showAlert, setShowAlert] = useState(false);
     setCompletePrompt("");
     setPrompt("");
     setChainOfThought1("");
+    setCode1("")
     setOutput1("");
     setError1("");
     setChainOfThought2("");
+    setCode2("")
     setOutput2("");
     setError2("");
 
@@ -49,29 +53,38 @@ const [showAlert, setShowAlert] = useState(false);
   };
 
   useEffect(() => {
-    let fullPrompt = instructions+" "+
+    let fullPrompt =
+      instructions +
+      " " +
       "\nPrompt: " +
       prompt +
       "\nChain of Thought 1: " +
       wrapper(ChainOfThought1) +
+      "\nCode 1: " +
+      wrapper(code1) +
       "\nOutput 1: " +
       wrapper(output1) +
       "\nError 1: " +
       wrapper(error1) +
       "\nChain of Thought 2: " +
       wrapper(ChainOfThought2) +
+      "\nCode 2: " +
+      wrapper(code2) +
       "\nOutput 2: " +
       wrapper(output2) +
       "\nError 2: " +
-      wrapper(error2)+ append;
+      wrapper(error2) +
+      append;
     setCompletePrompt(fullPrompt);
   }, [
     combine,
     prompt,
     ChainOfThought1,
+    code1,
     output1,
     error1,
     ChainOfThought2,
+    code2,
     output2,
     error2,
   ]);
@@ -159,6 +172,12 @@ const [showAlert, setShowAlert] = useState(false);
         code: "`",
       })}
       {InputElement({
+        label: "Code 1",
+        value: code1,
+        setValue: setCode1,
+        code: "`",
+      })}
+      {InputElement({
         label: "Output 1",
         value: output1,
         setValue: setOutput1,
@@ -174,6 +193,12 @@ const [showAlert, setShowAlert] = useState(false);
         label: "Chain of Thought 2",
         value: ChainOfThought2,
         setValue: setChainOfThought2,
+        code: "`",
+      })}
+      {InputElement({
+        label: "Code 2",
+        value: code2,
+        setValue: setCode2,
         code: "`",
       })}
       {InputElement({
