@@ -9,9 +9,11 @@ You should judge based on which response moves the model in the best direction t
 
 
 
-const response1 = `Rate Response 1 on the 4 dimensions`;
-const response2 = `Rate Response 2 on the 4 dimensions`;
-const score = `Provide a side-by-side score to specify how much you prefer one response over the other, per the “Code v Code Official Instructions” file.`;
+const response1 = `Rate Response 1 on the 4 dimensions, Don't forget that out of 4 the function correctness will either be equal or less than the tool correctness, and the parameter correctness will either be equal or less than the function correctness
+however, the fulfillment is not bound by these constraints and while it is highly likely to be correlated with the other dimensions, it is scored independently and out of a score , make sure you review the “Code v Code Official Instructions”. file in your memory.`;
+const response2 = `Rate Response 2 on the 4 dimensions Don't forget that out of 4 the function correctness will either be equal or less than the tool correctness, and the parameter correctness will either be equal or less than the function correctness
+however, the fulfillment is not bound by these constraints and while it is highly likely to be correlated with the other dimensions, it is scored independently and out of a score , make sure you review the “Code v Code Official Instructions”. file in your memory.`;
+const score = `Provide a side-by-side score to specify how much you prefer one response over the other, per the “Code v Code Official Instructions” file, make sure you review it in your memory.`;
 const justification = `Write a good justification based on the examples and structure of what is presented as a good justification per the “Code v Code Official Instructions” file. Structure it with an opening statement comparing the two outputs and the degree to which one is better than the other or equivalent, then follow with how they compare in the following dimensions, 
 Tool correctness : 
 
