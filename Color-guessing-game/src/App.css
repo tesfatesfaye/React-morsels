@@ -1,0 +1,32 @@
+h1{
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  
+}
+.comp{
+  border: 2px solid transparent ;
+  width: 800px;
+  height: 400px;
+
+}
+.app{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+ 
+}
+.appChild{
+display: flex;
+gap:20px;
+width:100%;
+justify-content: center;
+
+}
+.button{
+  padding: 1%;
+  cursor: pointer;
+}
